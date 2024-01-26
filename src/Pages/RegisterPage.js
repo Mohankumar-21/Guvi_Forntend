@@ -49,7 +49,7 @@ const Register = () => {
     }
 
     try {
-      const res = await axios.post('/api/v1/user/register', { name, email, password });
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND}/api/v1/user/register`, { name, email, password });
 
       if (res.data.success) {
         message.success('Register Successfully');

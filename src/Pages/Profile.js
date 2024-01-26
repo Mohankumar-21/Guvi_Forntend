@@ -19,8 +19,9 @@ const Profile = () => {
 
   const getUserInfo = async () => {
     try {
+
       const res = await axios.post(
-        `/api/v1/user/getUserInfo`,
+        `${process.env.REACT_APP_BACKEND}/api/v1/user/getUserInfo`,
         { userId: id },
         {
           headers: {
@@ -45,6 +46,7 @@ const Profile = () => {
       }
     } catch (error) {
       console.log(error);
+      console.error("Error fetching user info:", error);
     }
   };
 
@@ -71,7 +73,8 @@ const Profile = () => {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    axios.post( '/api/v1/user/updateprofile',
+     
+     axios.post(`${process.env.REACT_APP_BACKEND}/api/v1/user/updateprofile`,
         {
           userName: userData.userName,
           email: userData.email,

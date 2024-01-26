@@ -16,6 +16,7 @@ const LoginPage = () => {
   {
       e.preventDefault();
      
+
       if ( !email || !password ) {
         message.error('Please fill in all fields');
         return;
@@ -23,7 +24,7 @@ const LoginPage = () => {
 
       try
       {
-        const res = await axios.post('api/v1/user/login', {email, password});
+        const res = await axios.post(`${process.env.REACT_APP_BACKEND}/api/v1/user/login`, {email, password});
         if(res.data.success)
         {
           localStorage.setItem("token", res.data.token);
